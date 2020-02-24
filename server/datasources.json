@@ -1,0 +1,17 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "db-manager-app": {
+    "host": "localhost",
+    "port": 27017,
+    "url": "",
+    "database": "db-manager-app",
+    "password": "",
+    "name": "db-manager-app",
+    "user": "nhat",
+    "useNewUrlParser": false,
+    "connector": "mongodb"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "name": "user",
+  "base": "User",
+  "idInjection": true,
+  "options": {},
+  "mixins": {
+    "AutoSaveField": true
+  },
+  "properties": {
+    "userId": {
+      "type": "number"
+    },
+    "username": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "required": true
+    },
+    "password": {
+      "type": "string",
+      "required": true
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "noOfProjects": {
+      "type": "number"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "companyId": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "date"
+    },
+    "modified_at": {
+      "type": "date"
+    },
+    "created_by": {
+      "type": "user"
+    },
+    "modified_by": {
+      "type": "user"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "company": {
+      "type": "belongsTo",
+      "model": "Company",
+      "foreignKey": "companyId"
+    },
+    "companies": {
+      "type": "hasMany",
+      "model": "Company",
+      "foreignKey": "userId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "clientadmin",
+      "permission": "ALLOW",
+      "property": "assignUserToCompany"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}
